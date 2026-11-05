@@ -3,6 +3,7 @@ import {
   CalendarDays,
   Circle,
   ClipboardList,
+  Download,
   Eye,
   Layers,
   Monitor,
@@ -24,7 +25,7 @@ import {
 /** The site's wording, shared by every design so the designs cannot drift apart. */
 
 export const heroText =
-  "One powerful multimedia platform for presentations, media, cameras, live production, and streaming."
+  "Powerful multimedia presentation and live production software built for seamless control."
 
 export const positioningText = "Think OBS and EasyWorship, combined into one software."
 
@@ -65,6 +66,59 @@ export const features: { title: string; text: string; icon: LucideIcon }[] = [
     icon: CalendarDays,
   },
   { title: "LiveCat Remote", text: "Control authorized LiveCat features from phones and tablets.", icon: Smartphone },
+]
+
+/** The six feature cards of the main design. The Studio design shows the longer list above. */
+export const coreFeatures: { title: string; text: string; icon: LucideIcon }[] = [
+  {
+    title: "Lyrics and Presentation Management",
+    text: "Keep lyrics, Bible passages, PowerPoint presentations, images, and videos in one organized library.",
+    icon: Presentation,
+  },
+  {
+    title: "Media Playback",
+    text: "Play videos and images, and add YouTube videos through the official embedded player.",
+    icon: MonitorPlay,
+  },
+  {
+    title: "Preview and Program Control",
+    text: "Prepare the next item safely in Preview, then TAKE it to Program when you are ready.",
+    icon: ArrowRightLeft,
+  },
+  {
+    title: "Remote Control",
+    text: "Run authorized controls from phones and tablets with LiveCat Remote over your local network.",
+    icon: Smartphone,
+  },
+  {
+    title: "Live Production Workflow",
+    text: "Plan the whole service schedule, then stream Program output over RTMP or record it locally.",
+    icon: Radio,
+  },
+  {
+    title: "Scene and Source Management",
+    text: "Combine cameras, capture devices, lyrics, media, and graphics into reusable scenes.",
+    icon: Layers,
+  },
+]
+
+/** The three steps of the main design's How It Works section. */
+export const setupSteps: { title: string; text: string; icon: LucideIcon }[] = [
+  {
+    title: "Download and install",
+    text: "Download LiveCat Multimedia for Windows and run the installer.",
+    icon: Download,
+  },
+  {
+    title: "Prepare your content",
+    text: "Add lyrics, presentations, media, cameras, and scenes to your service schedule.",
+    icon: ClipboardList,
+  },
+  {
+    title: "Control and go live",
+    text: "Line up each item in Preview, TAKE it to Program, and project, stream, or record.",
+    icon: Radio,
+  },
 ]
 
 export const steps: { title: string; text: string; icon: LucideIcon }[] = [

@@ -1,3 +1,4 @@
+import { domAnimation, LazyMotion, MotionConfig } from "motion/react"
 import { lazy, Suspense } from "react"
 import { activeDesign } from "@/config/site"
 
@@ -14,8 +15,14 @@ function chooseDesign() {
 export default function App() {
   const Site = designs[chooseDesign()]
   return (
-    <Suspense fallback={null}>
-      <Site />
-    </Suspense>
+    // "user" follows the visitor's reduced-motion setting: movement is dropped, only fades remain
+    <MotionConfig reducedMotion="user">
+      {/* Loads only the animation features the site uses, keeping the bundle small */}
+      <LazyMotion features={domAnimation} strict>
+        <Suspense fallback={null}>
+          <Site />
+        </Suspense>
+      </LazyMotion>
+    </MotionConfig>
   )
 }

@@ -12,17 +12,25 @@ const sizes = {
 
 type Size = keyof typeof sizes
 
-const primary = (size: Size, className?: string) => cn(buttonVariants(), sizes[size], "rounded-lg", className)
+const primary = (size: Size, className?: string) =>
+  cn(
+    buttonVariants(),
+    sizes[size],
+    "rounded-lg transition-[background-color,box-shadow,translate] duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-8px_rgb(0_102_255/0.75)]",
+    className,
+  )
 
 /**
  * "Download for Windows". Downloads the newest installer straight away.
  */
 export function WindowsDownloadButton({
   size = "lg",
+  label = "Download for Windows",
   className,
   onClick,
 }: {
   size?: Size
+  label?: string
   className?: string
   onClick?: () => void
 }) {
@@ -40,7 +48,7 @@ export function WindowsDownloadButton({
       <WindowsIcon className="size-4!" />
       {/* The button has a fixed height, so it does not grow when the version arrives from GitHub */}
       <span className="flex flex-col items-start leading-tight">
-        Download for Windows
+        {label}
         {version && <span className="text-[0.6875rem] font-normal sm:text-xs">Version {version}</span>}
       </span>
     </a>
@@ -48,13 +56,13 @@ export function WindowsDownloadButton({
 }
 
 /** The button on the Windows download card itself. With no installer URL it cannot lead anywhere, so it is disabled. */
-export function WindowsCardButton({ className }: { className?: string }) {
-  if (windowsDownloadReady) return <WindowsDownloadButton className={className} />
+export function WindowsCardButton({ label = "Download for Windows", className }: { label?: string; className?: string }) {
+  if (windowsDownloadReady) return <WindowsDownloadButton label={label} className={className} />
 
   return (
     <button type="button" disabled className={primary("lg", cn("disabled:opacity-60", className))}>
       <WindowsIcon className="size-4!" />
-      Download for Windows
+      {label}
     </button>
   )
 }
@@ -84,7 +92,7 @@ export function MacButton({
       disabled
       className={cn(
         "inline-flex h-13 cursor-not-allowed items-center justify-center gap-2.5 rounded-lg border px-6 text-base font-semibold",
-        onSolidBlue ? "border-white text-white" : "border-panel-2 bg-panel-2 text-muted-foreground",
+        onSolidBlue ? "border-white text-white" : "border-white/10 bg-white/5 text-muted-foreground backdrop-blur",
         className,
       )}
     >
