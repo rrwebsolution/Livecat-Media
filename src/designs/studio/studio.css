@@ -1,0 +1,27 @@
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/archivo/wdth-italic.css";
+@import "@fontsource/ibm-plex-mono/latin-500.css";
+
+/*
+ * The Studio design: heavy italic type that echoes the official wordmark, plain technical labels,
+ * square corners and ruled lines. Solid colors only.
+ */
+.studio {
+  font-family: "Archivo Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+.studio-display {
+  font-style: italic;
+  font-weight: 800;
+  font-stretch: 112%;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+}
+
+.studio-label {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
