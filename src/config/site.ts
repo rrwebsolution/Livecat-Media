@@ -17,6 +17,7 @@ export const navLinks = [
   { label: "Home", href: "#top" },
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
+  { label: "User Manual", href: "/user-manual.html" },
 ]
 
 export const footerGroups = [
