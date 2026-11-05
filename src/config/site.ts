@@ -12,6 +12,7 @@ export const navLinks = [
   { label: "How It Works", href: "#how-it-works" },
   { label: "LiveCat Remote", href: "#remote" },
   { label: "Download", href: "#download" },
+  { label: "User Manual", href: "/user-manual.html" },
   { label: "FAQ", href: "#faq" },
 ]
 
@@ -19,6 +20,7 @@ export const footerLinks = [
   { label: "Features", href: "#features" },
   { label: "LiveCat Remote", href: "#remote" },
   { label: "Download", href: "#download" },
+  { label: "User Manual", href: "/user-manual.html" },
   { label: "FAQ", href: "#faq" },
   // Paste the real addresses here. An empty address shows the name as plain text, not a dead link.
   { label: "Support", href: "" },

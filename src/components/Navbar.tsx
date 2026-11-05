@@ -31,7 +31,7 @@ export function Navbar({ square = false }: { square?: boolean }) {
           <span className="text-base sm:text-lg">{brand.name}</span>
         </a>
 
-        <div className="hidden items-center gap-1 lg:flex">
+        <div className="hidden items-center gap-1 xl:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -50,14 +50,14 @@ export function Navbar({ square = false }: { square?: boolean }) {
           aria-expanded={open}
           aria-controls="mobile-navigation"
           aria-label={open ? "Close menu" : "Open menu"}
-          className={cn("flex size-11 items-center justify-center rounded-lg border border-panel-2 lg:hidden", square && "rounded-none")}
+          className={cn("flex size-11 items-center justify-center rounded-lg border border-panel-2 xl:hidden", square && "rounded-none")}
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </nav>
 
       {open && (
-        <div id="mobile-navigation" className="border-t border-panel-2 bg-navy px-4 pt-2 pb-4 sm:px-6 lg:hidden">
+        <div id="mobile-navigation" className="border-t border-panel-2 bg-navy px-4 pt-2 pb-4 sm:px-6 xl:hidden">
           {navLinks.map((link) => (
             <a
               key={link.href}

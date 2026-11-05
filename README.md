@@ -28,8 +28,20 @@ Everything about downloads is in `src/config/release.ts`:
 
 ## Before going live
 
-- Set `VITE_SITE_URL` in `.env` to the public address, so social networks can find the Open Graph image.
+- Set `VITE_SITE_URL` to the public address, so social networks can find the Open Graph image. On Vercel, set it under
+  Project Settings → Environment Variables and redeploy.
 - Add the Support, Privacy and Terms addresses in `src/config/site.ts`. Without an address they show as plain text.
+
+## Deploying to Vercel
+
+Import the repository in Vercel. `vercel.json` sets the build command, the output folder and the headers, so no other
+settings are needed. It also turns on clean addresses, so `/user-manual.html` becomes `/user-manual`.
+
+## User manual
+
+`public/user-manual.html` is a copy of `docs/User-Manual.html` from the desktop project, so update it when the manual
+changes there. The copy has three extra things to keep: a link back to the site at the top of the contents list, a
+description and an icon in the `<head>`.
 
 ## Brand rules
 
