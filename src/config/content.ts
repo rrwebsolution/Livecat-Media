@@ -176,7 +176,7 @@ export const questions = [
   {
     question: "Is LiveCat available for macOS?",
     answer:
-      "Yes, for Macs with Apple Silicon (M1 or newer): download it in the Download section. Some Windows-only features, such as window capture, NDI and recording this app's own sound, are not available on a Mac yet.",
+      "Yes, for Macs with Apple Silicon (M1 or newer): download it in the Download section. Some Windows-only features, such as window capture and NDI, are not available on a Mac yet.",
   },
   {
     question: "Can I use LiveCat with a projector?",
@@ -354,7 +354,7 @@ export const windowsSpecs: Spec[] = [
 ]
 
 export const macSpecs: Spec[] = [
-  { label: "System", minimum: "macOS 12 Monterey", recommended: "The newest macOS" },
+  { label: "System", minimum: "macOS 13 Ventura", recommended: "The newest macOS" },
   { label: "Processor", minimum: "Apple M1", recommended: "Apple M2 or newer" },
   { label: "Memory (RAM)", minimum: "16 GB", recommended: "32 GB" },
   { label: "Storage", minimum: "2 GB free + space for recordings", recommended: "About 3 GB per hour of recording" },
@@ -411,4 +411,5 @@ export const macPreviewSteps = [
   "Drag LiveCat Multimedia into the Applications folder.",
   "The first time: open Applications, right-click LiveCat Multimedia → Open, then Open again.",
   "Allow the camera and microphone when the Mac asks.",
+  "For the sound of videos and music in recordings and the livestream: System Settings → Privacy & Security → Screen & System Audio Recording → turn on LiveCat Multimedia, then restart LiveCat (macOS 13 or newer).",
 ]
