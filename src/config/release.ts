@@ -14,8 +14,10 @@ export const latestReleaseApi = `https://api.github.com/repos/${releasesRepo}/re
 export const releaseConfig = {
   windowsAvailable: true,
   windowsDownloadUrl: `https://github.com/${releasesRepo}/releases/latest`,
-  macAvailable: false,
-  macDownloadUrl: "",
+  // the Mac button is always on: it downloads the newest -mac.dmg found on GitHub Releases (latestInstaller.ts), and
+  // opens the releases page if GitHub cannot be asked
+  macAvailable: true,
+  macDownloadUrl: `https://github.com/${releasesRepo}/releases`,
   version: "",
   windowsFileSize: "",
   releaseDate: "",
