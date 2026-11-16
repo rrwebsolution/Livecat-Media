@@ -14,31 +14,40 @@ export const brand = {
 
 /** The links in the navigation bar. */
 export const navLinks = [
-  { label: "Home", href: "#top" },
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Compare", href: "#compare" },
-  { label: "User Manual", href: "/user-manual.html" },
+  { label: "Home", href: "/" },
+  { label: "Features", href: "/#features" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Compare", href: "/#compare" },
+  { label: "User Manual", href: "/user-manual" },
 ]
 
 export const footerGroups = [
   {
     title: "Product",
     links: [
-      { label: "Features", href: "#features" },
-      { label: "How It Works", href: "#how-it-works" },
-      { label: "Compare", href: "#compare" },
-      { label: "LiveCat Remote", href: "#remote" },
-      { label: "Download", href: "#download" },
+      { label: "Features", href: "/#features" },
+      { label: "How It Works", href: "/#how-it-works" },
+      { label: "Compare", href: "/#compare" },
+      { label: "LiveCat Remote", href: "/#remote" },
+      { label: "Download", href: "/download" },
+    ],
+  },
+  {
+    title: "Solutions",
+    links: [
+      { label: "All features", href: "/features" },
+      { label: "Church presentation software", href: "/church-presentation-software" },
+      { label: "Worship lyrics software", href: "/worship-lyrics-software" },
+      { label: "Live production software", href: "/live-production-software" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "User Manual", href: "/user-manual.html" },
-      { label: "API Keys", href: "#api-keys" },
-      { label: "FAQ", href: "#faq" },
-      { label: "Sponsors & Partners", href: "#partners" },
+      { label: "User Manual", href: "/user-manual" },
+      { label: "API Keys", href: "/#api-keys" },
+      { label: "FAQ", href: "/#faq" },
+      { label: "Sponsors & Partners", href: "/#partners" },
       // Paste the real addresses here. An empty address shows the name as plain text, not a dead link.
       { label: "Support", href: "mailto:rrwebsolutions1998@gmail.com?subject=LiveCat%20support" },
       { label: "Privacy", href: "" },

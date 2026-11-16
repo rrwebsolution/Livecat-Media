@@ -22,7 +22,8 @@ import { fadeUp, inView, stagger } from "@/lib/motion"
 import { SectionHeading } from "./SectionHeading"
 import { WindowsIcon } from "./WindowsIcon"
 
-export function Download() {
+/** asPage: on /download the heading is the page h1 */
+export function Download({ asPage = false }: { asPage?: boolean }) {
   const macPreview = useMacDownload()
   const macReady = macDownloadReady || macPreview !== null
   // Release details appear only when they have really been configured.
@@ -44,7 +45,11 @@ export function Download() {
           <div aria-hidden="true" className="section-line absolute inset-x-10 top-0" />
 
           <div className="relative">
-            <SectionHeading eyebrow="Download" title="Get LiveCat Multimedia">
+            <SectionHeading
+              eyebrow="Download"
+              title={asPage ? "Download LiveCat Multimedia" : "Get LiveCat Multimedia"}
+              level={asPage ? 1 : 2}
+            >
               {macReady
                 ? "Install LiveCat on Windows or macOS today."
                 : "Install LiveCat on Windows today. The macOS version is on its way."}

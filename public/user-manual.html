@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LiveCat Multimedia Operator Manual</title>
 <meta name="description" content="How to run lyrics, Bible verses, PowerPoint, videos, cameras, recording and livestreaming with LiveCat Multimedia.">
+<link rel="canonical" href="https://www.getlivecat.com/user-manual">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="LiveCat Multimedia">
+<meta property="og:title" content="LiveCat Multimedia Operator Manual">
+<meta property="og:description" content="How to run lyrics, Bible verses, PowerPoint, videos, cameras, recording and livestreaming with LiveCat Multimedia.">
+<meta property="og:url" content="https://www.getlivecat.com/user-manual">
+<meta property="og:image" content="https://www.getlivecat.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="/LiveCat%20logo/icon-32.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@500&display=swap">
 <style>
@@ -166,6 +174,7 @@ footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line);
       <li><a href="#settings">Settings</a></li>
       <li><a href="#keys">Keyboard shortcuts</a></li>
       <li><a href="#help">When something goes wrong</a></li>
+      <li><a href="#support">Support, sponsors &amp; partners</a></li>
     </ol>
   </nav>
 
@@ -455,8 +464,45 @@ footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line);
       </ul>
     </details>
 
+    <h2 id="support">Support, sponsors &amp; partners</h2>
+    <h3>Getting help</h3>
+    <p>For help with LiveCat, an API key, or anything in this manual, contact the owner and developer:</p>
+    <ul class="plain">
+      <li>E-mail: <a href="mailto:rrwebsolutions1998@gmail.com?subject=LiveCat%20support">rrwebsolutions1998@gmail.com</a></li>
+      <li>Phone: <a href="tel:09358554398">09358554398</a></li>
+    </ul>
+
+    <h3>Downloads</h3>
+    <p>Download the newest LiveCat for Windows or macOS from the Download section of the <a href="/#download">LiveCat website</a>. The website also shows how many times LiveCat has been downloaded.</p>
+    <p id="download-count" hidden></p>
+
+    <h3>Sponsors &amp; partners</h3>
+    <p>LiveCat Multimedia is built by an independent developer for churches, schools and events. Sponsors and partners will be listed on the <a href="/#partners">website</a> as they join.</p>
+    <div class="note ok">
+      <p><b>We are looking for investors, sponsors and partners.</b> Whether you want to invest in LiveCat, sponsor its development, or partner with us, contact the owner at <a href="mailto:rrwebsolutions1998@gmail.com?subject=LiveCat%20investment%20%2F%20partnership">rrwebsolutions1998@gmail.com</a> or <a href="tel:09358554398">09358554398</a>.</p>
+    </div>
+
     <footer>Written for LiveCat Multimedia as of November 2026. Button names in this manual match the labels in the app.</footer>
   </main>
 </div>
+<script>
+// Total installer downloads (.exe and .dmg) from GitHub Releases. Stays hidden if GitHub cannot be asked.
+(async () => {
+  try {
+    let total = 0
+    for (let page = 1; page <= 10; page++) {
+      const response = await fetch("https://api.github.com/repos/rrwebsolution/jamc-worship-presenter/releases?per_page=100&page=" + page, { headers: { Accept: "application/vnd.github+json" } })
+      if (!response.ok) return
+      const releases = await response.json()
+      for (const release of releases) for (const asset of release.assets || []) if (/\.(exe|dmg)$/i.test(asset.name)) total += asset.download_count || 0
+      if (releases.length < 100) break
+    }
+    if (!total) return
+    const el = document.getElementById("download-count")
+    el.innerHTML = "<b>" + total.toLocaleString("en-US") + "</b> downloads so far."
+    el.hidden = false
+  } catch {}
+})()
+</script>
 </body>
 </html>

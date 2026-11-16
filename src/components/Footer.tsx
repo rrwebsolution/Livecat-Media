@@ -8,9 +8,9 @@ export function Footer({ wide = false }: { wide?: boolean }) {
   return (
     <footer className="relative border-t border-white/10 bg-navy/80 backdrop-blur-sm">
       <div className={cn("mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16", wide && "max-w-[90rem] lg:px-10")}>
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
           <div className="sm:col-span-2 lg:col-span-1">
-            <a href="#top" className="inline-flex items-center gap-2.5 rounded-md text-lg font-bold tracking-tight">
+            <a href="/" className="inline-flex items-center gap-2.5 rounded-md text-lg font-bold tracking-tight">
               <BrandIcon className="size-9" />
               {brand.name}
             </a>

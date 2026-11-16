@@ -41,7 +41,7 @@ export function Navbar({ square = false }: { square?: boolean }) {
           square && "max-w-[90rem] lg:px-10",
         )}
       >
-        <a href="#top" className="flex items-center gap-2.5 rounded-md font-bold tracking-tight">
+        <a href="/" className="flex items-center gap-2.5 rounded-md font-bold tracking-tight">
           <BrandIcon className="size-9" />
           <span className="text-base sm:text-lg">{brand.name}</span>
         </a>
