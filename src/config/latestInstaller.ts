@@ -52,3 +52,44 @@ export function useWindowsDownload() {
 
   return { href, version, waitThenDownload }
 }
+
+type MacInstaller = { url: string; version: string | null }
+
+let macLookup: Promise<MacInstaller | null> | undefined
+
+/**
+ * The newest macOS preview (.dmg whose name ends in "-mac.dmg") on any recent release: the Mac build is made by hand
+ * and attached to the release it was built from, so the newest Windows release may not have one yet.
+ */
+export function latestMacInstaller(): Promise<MacInstaller | null> {
+  macLookup ??= fetch(`${latestReleaseApi.replace(/\/latest$/, "")}?per_page=30`, {
+    headers: { Accept: "application/vnd.github+json" },
+  })
+    .then((response) => (response.ok ? response.json() : []))
+    .then((releases: Release[]) => {
+      for (const release of Array.isArray(releases) ? releases : []) {
+        const dmg = release.assets?.find((asset) => asset.name.toLowerCase().endsWith("-mac.dmg"))
+        if (dmg) return { url: dmg.browser_download_url, version: release.tag_name?.replace(/^v/, "") || null }
+      }
+      return null
+    })
+    .catch(() => null)
+  return macLookup
+}
+
+/** The macOS preview download, or null while it is looked up or when there is none yet ("Coming Soon"). */
+export function useMacDownload() {
+  const [installer, setInstaller] = useState<MacInstaller | null>(null)
+
+  useEffect(() => {
+    let current = true
+    void latestMacInstaller().then((found) => {
+      if (current) setInstaller(found)
+    })
+    return () => {
+      current = false
+    }
+  }, [])
+
+  return installer
+}

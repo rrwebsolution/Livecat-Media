@@ -3,9 +3,12 @@ import { m } from "motion/react"
 import {
   installerPendingText,
   macRequirementsText,
+  macPreviewRequirements,
+  macPreviewSteps,
   macStatusText,
   windowsRequirements,
 } from "@/config/content"
+import { useMacDownload } from "@/config/latestInstaller"
 import { macDownloadReady, releaseConfig, windowsDownloadReady } from "@/config/release"
 import { MacButton, WindowsCardButton } from "./PlatformButtons"
 import { fadeUp, inView, stagger } from "@/lib/motion"
@@ -13,6 +16,8 @@ import { SectionHeading } from "./SectionHeading"
 import { WindowsIcon } from "./WindowsIcon"
 
 export function Download() {
+  const macPreview = useMacDownload()
+  const macReady = macDownloadReady || macPreview !== null
   // Release details appear only when they have really been configured.
   const details = [
     { label: "File size", value: releaseConfig.windowsFileSize },
@@ -33,7 +38,9 @@ export function Download() {
 
           <div className="relative">
             <SectionHeading eyebrow="Download" title="Get LiveCat Multimedia">
-              Install LiveCat on Windows today. The macOS version is on its way.
+              {macReady
+                ? "Install LiveCat on Windows, or try the macOS preview."
+                : "Install LiveCat on Windows today. The macOS version is on its way."}
             </SectionHeading>
 
             <m.div
@@ -88,14 +95,34 @@ export function Download() {
                   <span className="flex size-12 items-center justify-center rounded-xl bg-panel-2">
                     <Laptop className="size-6" aria-hidden="true" />
                   </span>
-                  {!macDownloadReady && (
+                  {macReady ? (
+                    <span className="rounded-full border border-brand/40 bg-brand/15 px-3 py-1 text-xs font-semibold text-brand">
+                      Preview
+                    </span>
+                  ) : (
                     <span className="rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-muted-foreground">
                       Coming soon
                     </span>
                   )}
                 </div>
                 <h3 className="mt-6 text-2xl font-bold tracking-tight">macOS</h3>
-                {!macDownloadReady && (
+                {macReady ? (
+                  <>
+                    <ul className="mt-4 space-y-2">
+                      {macPreviewRequirements.map((r) => (
+                        <li key={r} className="flex items-center gap-2 text-muted-foreground">
+                          <Check className="size-4 text-brand" aria-hidden="true" />
+                          {r}
+                        </li>
+                      ))}
+                    </ul>
+                    <ol className="mt-5 list-decimal space-y-1.5 pl-5 text-sm leading-relaxed text-muted-foreground">
+                      {macPreviewSteps.map((s) => (
+                        <li key={s}>{s}</li>
+                      ))}
+                    </ol>
+                  </>
+                ) : (
                   <>
                     <p className="mt-4 leading-relaxed text-muted-foreground">{macStatusText}</p>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{macRequirementsText}</p>

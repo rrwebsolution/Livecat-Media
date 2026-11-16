@@ -1,7 +1,7 @@
 import { Download, Laptop } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
 import { macDownloadReady, releaseConfig, windowsDownloadReady } from "@/config/release"
-import { useWindowsDownload } from "@/config/latestInstaller"
+import { useMacDownload, useWindowsDownload } from "@/config/latestInstaller"
 import { cn } from "@/lib/utils"
 import { WindowsIcon } from "./WindowsIcon"
 
@@ -67,7 +67,10 @@ export function WindowsCardButton({ label = "Download for Windows", className }:
   )
 }
 
-/** macOS action: disabled "Coming Soon" until macOS is enabled in the release config. */
+/**
+ * macOS action: downloads the newest macOS preview (.dmg) found on GitHub Releases, or a link set in the release
+ * config; a disabled "Coming Soon" while there is none.
+ */
 export function MacButton({
   label = "Coming Soon",
   className,
@@ -77,11 +80,24 @@ export function MacButton({
   className?: string
   onSolidBlue?: boolean
 }) {
-  if (macDownloadReady) {
+  const preview = useMacDownload()
+  const href = preview?.url ?? (macDownloadReady ? releaseConfig.macDownloadUrl : null)
+  if (href) {
     return (
-      <a href={releaseConfig.macDownloadUrl} className={primary("lg", className)}>
-        <Download />
-        Download for macOS
+      <a
+        href={href}
+        className={primary(
+          "lg",
+          cn(onSolidBlue && "bg-white text-navy hover:bg-white/90", className),
+        )}
+      >
+        <Download className="size-4!" />
+        <span className="flex flex-col items-start leading-tight">
+          Download for macOS
+          <span className="text-[0.6875rem] font-normal sm:text-xs">
+            Preview{preview?.version ? ` · Version ${preview.version}` : ""}
+          </span>
+        </span>
       </a>
     )
   }

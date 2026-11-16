@@ -175,7 +175,8 @@ export const questions = [
   },
   {
     question: "Is LiveCat available for macOS?",
-    answer: "Not yet. The macOS version is planned for the future.",
+    answer:
+      "Yes, as a preview for Macs with Apple Silicon (M1 or newer): download it in the Download section. Some Windows-only features, such as window capture, NDI and recording this app's own sound, are not available on a Mac yet.",
   },
   {
     question: "Can I use LiveCat with a projector?",
@@ -331,3 +332,14 @@ export const apiKeysFootnote =
   "These sites sometimes change their pages. If a step looks different, or you need help, contact the owner below."
 
 export const ownerContact = { email: "rrwebsolutions1998@gmail.com", phone: "09358554398" }
+
+/** Shown on the macOS card once a macOS preview (.dmg) is on GitHub Releases. */
+export const macPreviewRequirements = ["Mac with Apple Silicon (M1 or newer)", "Preview version"]
+
+export const macPreviewSteps = [
+  "Install VLC media player from videolan.org.",
+  "For cameras, recording and livestream: install Homebrew (brew.sh), then run brew install ffmpeg in Terminal.",
+  "Open the .dmg and drag LiveCat Multimedia into Applications.",
+  "The first time: right-click LiveCat Multimedia → Open, then Open again.",
+  "Allow the camera and microphone when the Mac asks.",
+]
