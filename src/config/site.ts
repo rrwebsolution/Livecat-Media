@@ -17,6 +17,7 @@ export const navLinks = [
   { label: "Home", href: "#top" },
   { label: "Features", href: "#features" },
   { label: "How It Works", href: "#how-it-works" },
+  { label: "Compare", href: "#compare" },
   { label: "User Manual", href: "/user-manual.html" },
 ]
 
@@ -26,6 +27,7 @@ export const footerGroups = [
     links: [
       { label: "Features", href: "#features" },
       { label: "How It Works", href: "#how-it-works" },
+      { label: "Compare", href: "#compare" },
       { label: "LiveCat Remote", href: "#remote" },
       { label: "Download", href: "#download" },
     ],
@@ -34,9 +36,10 @@ export const footerGroups = [
     title: "Resources",
     links: [
       { label: "User Manual", href: "/user-manual.html" },
+      { label: "API Keys", href: "#api-keys" },
       { label: "FAQ", href: "#faq" },
       // Paste the real addresses here. An empty address shows the name as plain text, not a dead link.
-      { label: "Support", href: "" },
+      { label: "Support", href: "mailto:rrwebsolutions1998@gmail.com?subject=LiveCat%20support" },
       { label: "Privacy", href: "" },
       { label: "Terms", href: "" },
     ],

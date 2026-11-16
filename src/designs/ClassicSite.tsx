@@ -1,3 +1,5 @@
+import { ApiKeys } from "@/components/ApiKeys"
+import { Compare } from "@/components/Compare"
 import { Download } from "@/components/Download"
 import { FAQ } from "@/components/FAQ"
 import { Features } from "@/components/Features"
@@ -19,8 +21,10 @@ export default function ClassicSite() {
           <Hero />
           <Features />
           <HowItWorks />
+          <Compare />
           <LiveCatRemote />
           <Download />
+          <ApiKeys />
           <FAQ />
         </main>
         <Footer />

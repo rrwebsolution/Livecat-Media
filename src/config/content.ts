@@ -195,4 +195,139 @@ export const questions = [
     answer:
       "Core local presentation functionality is designed to work locally. Online services such as livestreaming and online APIs require an internet connection.",
   },
+  {
+    question: "How do I get API keys for Pixabay, YouTube or Bible versions?",
+    answer:
+      "See the API Keys section above for a link to each official site. For help, contact the owner: rrwebsolutions1998@gmail.com or 09358554398.",
+  },
 ]
+
+/**
+ * LiveCat next to OBS Studio. Only what each has built in, stated fairly: no logos, no "better than" claims.
+ * "yes" = built in, "extra" = possible with plugins, other programs or more setup, "no" = not built in.
+ */
+export type CompareMark = "yes" | "extra" | "no"
+
+export const compareIntro =
+  "OBS Studio is a great tool for cameras and streaming. LiveCat adds what a church service needs on top: lyrics, Bible, presentations and the service order, all in the same app."
+
+export const compareColumns = { livecat: "LiveCat", others: "OBS Studio" }
+
+export const comparison: { feature: string; livecat: CompareMark; others: CompareMark; note?: string }[] = [
+  { feature: "Cameras, scenes and transitions", livecat: "yes", others: "yes" },
+  { feature: "Livestream and recording", livecat: "yes", others: "yes" },
+  { feature: "Projector and TV outputs", livecat: "yes", others: "yes" },
+  { feature: "Song lyrics library", livecat: "yes", others: "extra", note: "Plugin or another program" },
+  { feature: "Bible verses", livecat: "yes", others: "extra", note: "Plugin or another program" },
+  { feature: "PowerPoint presentations", livecat: "yes", others: "extra", note: "Window or screen capture" },
+  { feature: "Lyrics as a lower third on the livestream", livecat: "yes", others: "extra", note: "Set up by hand" },
+  { feature: "Service order and schedule", livecat: "yes", others: "no" },
+  { feature: "AI Auto Director: several shots from one camera", livecat: "yes", others: "no" },
+  { feature: "Control from a phone or tablet", livecat: "yes", others: "extra", note: "Needs a separate remote app" },
+]
+
+export const compareFootnote =
+  "Compared on built-in features. Plugins and other programs can add more to OBS Studio. Already using OBS Studio? LiveCat can send its Program picture, lyrics included, to an OBS window."
+
+/** Where to get each API key LiveCat asks for (Settings in the app), with the owner's contact for help. */
+export const apiKeysIntro =
+  "Some online features use your church's own API key. Get each key from the official site below, then paste it in LiveCat where it asks."
+
+export const apiKeys: {
+  name: string
+  usedFor: string
+  href: string
+  linkLabel: string
+  getKey: string[]
+  inLiveCat: string[]
+  note?: string
+}[] = [
+  {
+    name: "Pixabay",
+    usedFor: "Free background videos",
+    href: "https://pixabay.com/api/docs/",
+    linkLabel: "pixabay.com/api/docs",
+    getKey: [
+      "Create a free account at pixabay.com, or sign in.",
+      "Open pixabay.com/api/docs.",
+      "Under Parameters, find \"key (required)\": your API key is shown there. Copy it.",
+    ],
+    inLiveCat: [
+      "Open Settings → Integrations → Pixabay.",
+      "Click Set Key… and paste the key, then OK.",
+      "LiveCat checks the key with Pixabay before saving it.",
+    ],
+  },
+  {
+    name: "YouTube Data API v3",
+    usedFor: "Searching YouTube by words",
+    href: "https://console.cloud.google.com/apis/library/youtube.googleapis.com",
+    linkLabel: "Google Cloud console",
+    getKey: [
+      "Open the Google Cloud console and sign in with a Google account.",
+      "Create a project (top bar → Select a project → New project).",
+      "APIs & Services → Library → search \"YouTube Data API v3\" → Enable.",
+      "APIs & Services → Credentials → Create credentials → API key. Copy it.",
+    ],
+    inLiveCat: [
+      "Open Settings → Integrations → Lyrics → YouTube Reference.",
+      "Click Set Key…, paste the key, then OK.",
+      "Or use the YouTube API Key… button in the YouTube search.",
+    ],
+    note: "Pasting YouTube links works without a key.",
+  },
+  {
+    name: "ESV API",
+    usedFor: "English Standard Version Bible",
+    href: "https://api.esv.org/",
+    linkLabel: "api.esv.org",
+    getKey: [
+      "Open api.esv.org and create an account, or sign in.",
+      "Create an API application (your church's name and how you will use it).",
+      "Copy the API key (token) of that application.",
+    ],
+    inLiveCat: [
+      "In Bible, click the Bible Versions button (sliders icon).",
+      "Paste the key in \"ESV API key\".",
+      "Select ESV, click Set Up…, then Test.",
+    ],
+    note: "Read the ESV API terms for church use.",
+  },
+  {
+    name: "NLT API",
+    usedFor: "New Living Translation Bible",
+    href: "https://api.nlt.to/",
+    linkLabel: "api.nlt.to",
+    getKey: [
+      "Open api.nlt.to.",
+      "Sign up for an API key with your e-mail address.",
+      "Copy the key you receive.",
+    ],
+    inLiveCat: [
+      "In Bible, click the Bible Versions button (sliders icon).",
+      "Paste the key in \"NLT API key\".",
+      "Select NLT, click Set Up…, then Test.",
+    ],
+  },
+  {
+    name: "API.Bible",
+    usedFor: "Other licensed Bible versions",
+    href: "https://scripture.api.bible/",
+    linkLabel: "scripture.api.bible",
+    getKey: [
+      "Open scripture.api.bible and sign up, or sign in.",
+      "Create an app and copy its API key.",
+      "Open the list of Bibles in your account and copy the Bible ID of the version your church may use.",
+    ],
+    inLiveCat: [
+      "In Bible, click the Bible Versions button (sliders icon).",
+      "Paste the key in \"API.Bible key\".",
+      "Select or add the version, click Set Up…, choose API.Bible, paste the Bible ID, then Test.",
+    ],
+  },
+]
+
+export const apiKeysFootnote =
+  "These sites sometimes change their pages. If a step looks different, or you need help, contact the owner below."
+
+export const ownerContact = { email: "rrwebsolutions1998@gmail.com", phone: "09358554398" }
