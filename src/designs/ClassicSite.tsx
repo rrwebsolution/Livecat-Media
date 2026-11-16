@@ -8,6 +8,7 @@ import { Hero } from "@/components/Hero"
 import { HowItWorks } from "@/components/HowItWorks"
 import { LiveCatRemote } from "@/components/LiveCatRemote"
 import { Navbar } from "@/components/Navbar"
+import { Partners } from "@/components/Partners"
 import { SiteBackground } from "@/components/SiteBackground"
 
 export default function ClassicSite() {
@@ -25,6 +26,7 @@ export default function ClassicSite() {
           <LiveCatRemote />
           <Download />
           <ApiKeys />
+          <Partners />
           <FAQ />
         </main>
         <Footer />

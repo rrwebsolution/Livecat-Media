@@ -38,6 +38,7 @@ export const footerGroups = [
       { label: "User Manual", href: "/user-manual.html" },
       { label: "API Keys", href: "#api-keys" },
       { label: "FAQ", href: "#faq" },
+      { label: "Sponsors & Partners", href: "#partners" },
       // Paste the real addresses here. An empty address shows the name as plain text, not a dead link.
       { label: "Support", href: "mailto:rrwebsolutions1998@gmail.com?subject=LiveCat%20support" },
       { label: "Privacy", href: "" },

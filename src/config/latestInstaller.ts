@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 import { latestReleaseApi, releaseConfig } from "./release"
 
-type Release = { tag_name?: string; assets?: { name: string; browser_download_url: string }[] }
+type Release = {
+  tag_name?: string
+  assets?: { name: string; browser_download_url: string; download_count?: number }[]
+}
 
 type LatestInstaller = { url: string; version: string | null }
 
@@ -92,4 +95,57 @@ export function useMacDownload() {
   }, [])
 
   return installer
+}
+
+type DownloadTotals = { total: number; windows: number; mac: number }
+
+let totalsLookup: Promise<DownloadTotals | null> | undefined
+
+/**
+ * How many times the installers were downloaded: GitHub's download count of every .exe and .dmg on every release,
+ * added up. It also counts updates the app downloads by itself. Null when GitHub cannot be asked: the count then hides.
+ */
+export function downloadTotals(): Promise<DownloadTotals | null> {
+  totalsLookup ??= (async () => {
+    const base = latestReleaseApi.replace(/\/latest$/, "")
+    const totals: DownloadTotals = { total: 0, windows: 0, mac: 0 }
+    // 100 releases per page; stop at the first page that is not full (at most 10 pages)
+    for (let page = 1; page <= 10; page++) {
+      const response = await fetch(`${base}?per_page=100&page=${page}`, {
+        headers: { Accept: "application/vnd.github+json" },
+      })
+      if (!response.ok) return null
+      const releases = (await response.json()) as Release[]
+      if (!Array.isArray(releases)) return null
+      for (const release of releases) {
+        for (const asset of release.assets ?? []) {
+          const name = asset.name.toLowerCase()
+          const count = asset.download_count ?? 0
+          if (name.endsWith(".exe")) totals.windows += count
+          else if (name.endsWith(".dmg")) totals.mac += count
+        }
+      }
+      if (releases.length < 100) break
+    }
+    totals.total = totals.windows + totals.mac
+    return totals
+  })().catch(() => null)
+  return totalsLookup
+}
+
+/** The download totals, or null while they load or when GitHub cannot be asked. */
+export function useDownloadTotals() {
+  const [totals, setTotals] = useState<DownloadTotals | null>(null)
+
+  useEffect(() => {
+    let current = true
+    void downloadTotals().then((found) => {
+      if (current) setTotals(found)
+    })
+    return () => {
+      current = false
+    }
+  }, [])
+
+  return totals
 }

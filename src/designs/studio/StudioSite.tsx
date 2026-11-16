@@ -1,5 +1,6 @@
 import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
+import { Partners } from "@/components/Partners"
 import { MacButton, WindowsDownloadButton } from "@/components/PlatformButtons"
 import { Reveal } from "@/components/Reveal"
 import { brand } from "@/config/site"
@@ -23,6 +24,7 @@ export default function StudioSite() {
         <StudioRemote />
         <StudioDownload />
         <StudioFaq />
+        <Partners />
 
         <section className="bg-brand">
           <Reveal className={`${container} py-16 lg:py-28`}>

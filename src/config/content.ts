@@ -413,3 +413,23 @@ export const macPreviewSteps = [
   "Allow the camera and microphone when the Mac asks.",
   "For the sound of videos and music in recordings and the livestream: System Settings → Privacy & Security → Screen & System Audio Recording → turn on LiveCat Multimedia, then restart LiveCat (macOS 13 or newer).",
 ]
+
+/**
+ * Sponsors and partners. Add each one here when they come on board: the section then shows them by name (with a logo
+ * if "logo" points to an image in public/, and a link if "href" is filled in). While both lists are empty, the section
+ * says LiveCat is looking for investors, sponsors and partners.
+ */
+export type Supporter = { name: string; logo?: string; href?: string; note?: string }
+
+export const sponsors: Supporter[] = []
+
+export const partners: Supporter[] = []
+
+export const partnersIntro =
+  "LiveCat Multimedia is built by an independent developer for churches, schools and events. Sponsors, partners and investors help it grow."
+
+export const investorPitch = {
+  title: "We are looking for investors, sponsors and partners",
+  text: "Help bring LiveCat to more churches, schools and events. Whether you want to invest, sponsor development, or partner with us, the owner and developer would be glad to talk.",
+  ways: ["Invest in LiveCat", "Sponsor development", "Partner with us"],
+}

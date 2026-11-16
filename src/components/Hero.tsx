@@ -5,6 +5,7 @@ import desktop960 from "@/assets/screenshots/desktop-960.webp"
 import { heroText } from "@/config/content"
 import { brand } from "@/config/site"
 import { BrandIcon } from "./BrandIcon"
+import { DownloadCount } from "./DownloadCount"
 import { MacButton, WindowsDownloadButton } from "./PlatformButtons"
 import { easeOut, fadeUp, stagger } from "@/lib/motion"
 
@@ -118,6 +119,10 @@ export function Hero() {
           <m.div variants={fadeUp} className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <WindowsDownloadButton className="w-full sm:w-auto" />
             <MacButton label="macOS · Coming Soon" className="w-full sm:w-auto" />
+          </m.div>
+
+          <m.div variants={fadeUp}>
+            <DownloadCount className="mt-6" />
           </m.div>
 
           <m.ul

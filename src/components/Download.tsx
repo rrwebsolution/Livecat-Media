@@ -13,6 +13,7 @@ import {
   windowsRequirements,
   windowsSteps,
 } from "@/config/content"
+import { DownloadCount } from "./DownloadCount"
 import { InstallGuide } from "./InstallGuide"
 import { useMacDownload } from "@/config/latestInstaller"
 import { macDownloadReady, releaseConfig, windowsDownloadReady } from "@/config/release"
@@ -48,6 +49,9 @@ export function Download() {
                 ? "Install LiveCat on Windows or macOS today."
                 : "Install LiveCat on Windows today. The macOS version is on its way."}
             </SectionHeading>
+            <div className="mt-5 flex justify-center">
+              <DownloadCount detailed />
+            </div>
 
             <m.div
               variants={stagger(0.12)}
