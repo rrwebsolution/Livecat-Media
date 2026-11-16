@@ -94,9 +94,9 @@ export function MacButton({
         <Download className="size-4!" />
         <span className="flex flex-col items-start leading-tight">
           Download for macOS
-          <span className="text-[0.6875rem] font-normal sm:text-xs">
-            Preview{preview?.version ? ` · Version ${preview.version}` : ""}
-          </span>
+          {preview?.version && (
+            <span className="text-[0.6875rem] font-normal sm:text-xs">Version {preview.version}</span>
+          )}
         </span>
       </a>
     )

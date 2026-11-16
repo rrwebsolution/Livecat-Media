@@ -4,10 +4,16 @@ import {
   installerPendingText,
   macRequirementsText,
   macPreviewRequirements,
+  macNeeds,
+  macSpecs,
   macPreviewSteps,
   macStatusText,
+  windowsNeeds,
+  windowsSpecs,
   windowsRequirements,
+  windowsSteps,
 } from "@/config/content"
+import { InstallGuide } from "./InstallGuide"
 import { useMacDownload } from "@/config/latestInstaller"
 import { macDownloadReady, releaseConfig, windowsDownloadReady } from "@/config/release"
 import { MacButton, WindowsCardButton } from "./PlatformButtons"
@@ -39,7 +45,7 @@ export function Download() {
           <div className="relative">
             <SectionHeading eyebrow="Download" title="Get LiveCat Multimedia">
               {macReady
-                ? "Install LiveCat on Windows, or try the macOS preview."
+                ? "Install LiveCat on Windows or macOS today."
                 : "Install LiveCat on Windows today. The macOS version is on its way."}
             </SectionHeading>
 
@@ -48,7 +54,8 @@ export function Download() {
               initial="hidden"
               whileInView="show"
               viewport={inView}
-              className="mx-auto mt-14 grid max-w-4xl gap-5 md:grid-cols-2"
+              // items-start: each card is as tall as its own text, so "View more" on one never stretches the other
+              className="mx-auto mt-14 grid max-w-4xl items-start gap-5 md:grid-cols-2"
             >
               <m.article
                 variants={fadeUp}
@@ -69,6 +76,8 @@ export function Download() {
                     </li>
                   ))}
                 </ul>
+
+                <InstallGuide needs={windowsNeeds} specs={windowsSpecs} steps={windowsSteps} />
 
                 {details.length > 0 && (
                   <dl className="mt-5 flex flex-wrap gap-x-8 gap-y-3 text-sm">
@@ -96,9 +105,7 @@ export function Download() {
                     <Laptop className="size-6" aria-hidden="true" />
                   </span>
                   {macReady ? (
-                    <span className="rounded-full border border-brand/40 bg-brand/15 px-3 py-1 text-xs font-semibold text-brand">
-                      Preview
-                    </span>
+                    <span className="rounded-full bg-success/15 px-3 py-1 text-xs font-semibold text-success">Available now</span>
                   ) : (
                     <span className="rounded-full border border-white/10 px-3 py-1 text-xs font-semibold text-muted-foreground">
                       Coming soon
@@ -116,11 +123,7 @@ export function Download() {
                         </li>
                       ))}
                     </ul>
-                    <ol className="mt-5 list-decimal space-y-1.5 pl-5 text-sm leading-relaxed text-muted-foreground">
-                      {macPreviewSteps.map((s) => (
-                        <li key={s}>{s}</li>
-                      ))}
-                    </ol>
+                    <InstallGuide needs={macNeeds} specs={macSpecs} steps={macPreviewSteps} />
                   </>
                 ) : (
                   <>

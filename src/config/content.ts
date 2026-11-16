@@ -176,7 +176,7 @@ export const questions = [
   {
     question: "Is LiveCat available for macOS?",
     answer:
-      "Yes, as a preview for Macs with Apple Silicon (M1 or newer): download it in the Download section. Some Windows-only features, such as window capture, NDI and recording this app's own sound, are not available on a Mac yet.",
+      "Yes, for Macs with Apple Silicon (M1 or newer): download it in the Download section. Some Windows-only features, such as window capture, NDI and recording this app's own sound, are not available on a Mac yet.",
   },
   {
     question: "Can I use LiveCat with a projector?",
@@ -333,13 +333,82 @@ export const apiKeysFootnote =
 
 export const ownerContact = { email: "rrwebsolutions1998@gmail.com", phone: "09358554398" }
 
-/** Shown on the macOS card once a macOS preview (.dmg) is on GitHub Releases. */
-export const macPreviewRequirements = ["Mac with Apple Silicon (M1 or newer)", "Preview version"]
+/** Shown on the macOS card once a macOS .dmg is on GitHub Releases. */
+export const macPreviewRequirements = ["macOS on Apple Silicon (M1 or newer)", "64-bit"]
+
+/**
+ * System requirements per platform: the minimum that runs, and what is recommended for cameras plus a livestream.
+ * Livestream speed follows LiveCat's default stream of 6000 kbps (1080p): about 10 Mbps upload leaves room to spare.
+ * One hour of recording at that rate is about 2.7 GB.
+ */
+export type Spec = { label: string; minimum: string; recommended: string }
+
+export const windowsSpecs: Spec[] = [
+  { label: "System", minimum: "Windows 10, 64-bit", recommended: "Windows 11, 64-bit" },
+  { label: "Processor", minimum: "Intel Core i5 / AMD Ryzen 5 (4 cores)", recommended: "Intel Core i7 / AMD Ryzen 7 or better" },
+  { label: "Memory (RAM)", minimum: "16 GB", recommended: "32 GB" },
+  { label: "Graphics", minimum: "Built-in graphics", recommended: "NVIDIA or AMD graphics card (faster livestream)" },
+  { label: "Storage", minimum: "2 GB free + space for recordings", recommended: "SSD, about 3 GB per hour of recording" },
+  { label: "Internet upload", minimum: "5 Mbps (720p livestream)", recommended: "10 Mbps or faster (1080p livestream)" },
+  { label: "Screens", minimum: "One screen", recommended: "A second screen, projector or TV for the output" },
+]
+
+export const macSpecs: Spec[] = [
+  { label: "System", minimum: "macOS 12 Monterey", recommended: "The newest macOS" },
+  { label: "Processor", minimum: "Apple M1", recommended: "Apple M2 or newer" },
+  { label: "Memory (RAM)", minimum: "16 GB", recommended: "32 GB" },
+  { label: "Storage", minimum: "2 GB free + space for recordings", recommended: "About 3 GB per hour of recording" },
+  { label: "Internet upload", minimum: "5 Mbps (720p livestream)", recommended: "10 Mbps or faster (1080p livestream)" },
+  { label: "Screens", minimum: "One screen", recommended: "A second screen, projector or TV for the output" },
+]
+
+/** Other programs LiveCat needs on the computer: what each is for, where to get it, and how. */
+export type InstallNeed = { name: string; forWhat: string; href?: string; how?: string }
+
+export const windowsNeeds: InstallNeed[] = [
+  {
+    name: "VLC media player (64-bit)",
+    forWhat: "Videos, music and backgrounds",
+    href: "https://www.videolan.org/vlc/",
+    how: "Download it from videolan.org and install it.",
+  },
+  {
+    name: "FFmpeg",
+    forWhat: "Cameras, recording and livestream",
+    how: "Open Command Prompt and type: winget install Gyan.FFmpeg",
+  },
+  {
+    name: "Internet, the first time only",
+    forWhat: "YouTube videos",
+    how: "LiveCat downloads its YouTube player once, the first time you play a YouTube video.",
+  },
+]
+
+export const windowsSteps = [
+  "Click Download Now and open the downloaded LiveCat-Multimedia .exe file.",
+  "If Windows shows \"Windows protected your PC\": click More info → Run anyway.",
+  "Follow the installer and click Finish. LiveCat opens by itself.",
+  "Install VLC and FFmpeg (above) if this computer does not have them yet, then open LiveCat again.",
+  "Later versions install themselves: LiveCat shows \"Update available\".",
+]
+
+export const macNeeds: InstallNeed[] = [
+  {
+    name: "VLC media player",
+    forWhat: "Videos, music and backgrounds",
+    href: "https://www.videolan.org/vlc/download-macosx.html",
+    how: "Download it from videolan.org, open it and drag VLC into Applications.",
+  },
+  {
+    name: "Nothing else",
+    forWhat: "Cameras, recording and livestream",
+    how: "FFmpeg is built into the Mac app.",
+  },
+]
 
 export const macPreviewSteps = [
-  "Install VLC media player from videolan.org.",
-  "For cameras, recording and livestream: install Homebrew (brew.sh), then run brew install ffmpeg in Terminal.",
-  "Open the .dmg and drag LiveCat Multimedia into Applications.",
-  "The first time: right-click LiveCat Multimedia → Open, then Open again.",
+  "Click Download for macOS and open the downloaded .dmg file.",
+  "Drag LiveCat Multimedia into the Applications folder.",
+  "The first time: open Applications, right-click LiveCat Multimedia → Open, then Open again.",
   "Allow the camera and microphone when the Mac asks.",
 ]
